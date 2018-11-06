@@ -52,5 +52,3 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
     androidTestImplementation 'androidx.test:runner:1.1.0'
 }
-apply from: 'https://raw.github.com/Vorlonsoft/EasyDokkaPlugin/master/dokka.gradle'
-apply from: 'https://raw.github.com/Vorlonsoft/GradleMavenPush/master/maven-push.gradle'
