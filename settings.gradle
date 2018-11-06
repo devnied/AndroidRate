@@ -4,4 +4,4 @@
  * Licensed under The MIT License (MIT)
  */
 
-include ':library', ':sample'
+include ':library'
