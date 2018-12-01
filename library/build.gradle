@@ -17,7 +17,7 @@ android {
         targetSdkVersion 28
         versionCode version_code
         versionName version
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.android.support.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
         sourceCompatibility java_version
@@ -47,8 +47,9 @@ android {
     }
 }
 dependencies {
-    compileOnly 'androidx.annotation:annotation:1.0.0'
-    api 'androidx.appcompat:appcompat:1.0.0'
+    compileOnly 'com.android.support:support-annotations:28.0.0'
+    api 'com.android.support:support-annotations:28.0.0'
+    implementation "com.android.support:appcompat-v7:28.0.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
-    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
 }

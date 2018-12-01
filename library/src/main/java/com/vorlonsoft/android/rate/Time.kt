@@ -6,7 +6,7 @@
 
 package com.vorlonsoft.android.rate
 
-import androidx.annotation.LongDef
+import android.support.annotation.LongDef
 
 /**
  * Time Class - the time units class of the AndroidRate library.

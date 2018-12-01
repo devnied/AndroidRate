@@ -10,6 +10,8 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -21,9 +23,6 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import static android.content.DialogInterface.BUTTON_NEGATIVE;
 import static android.content.DialogInterface.BUTTON_NEUTRAL;
@@ -88,25 +87,25 @@ public class DefaultDialogManager implements DialogManager {
                 }
                 increment365DayPeriodDialogLaunchTimes(context);
             }
-            if (((SDK_INT >= LOLLIPOP) || (dialog instanceof androidx.appcompat.app.AlertDialog)) &&
+            if (((SDK_INT >= LOLLIPOP) || (dialog instanceof android.support.v7.app.AlertDialog)) &&
                 ((dialogOptions.getType() == CLASSIC) ||
                  (dialogOptions.getView(context) == null))) {
                 try {
                     final Button positiveButton = (dialog
-                                                    instanceof androidx.appcompat.app.AlertDialog) ?
-                          ((androidx.appcompat.app.AlertDialog) dialog).getButton(BUTTON_POSITIVE) :
+                                                    instanceof android.support.v7.app.AlertDialog) ?
+                          ((android.support.v7.app.AlertDialog) dialog).getButton(BUTTON_POSITIVE) :
                           ((AlertDialog) dialog).getButton(BUTTON_POSITIVE);
                     final LinearLayout linearLayout = (LinearLayout) positiveButton.getParent();
                     if ((linearLayout.getOrientation() != VERTICAL) &&
                         ((positiveButton.getLeft() + positiveButton.getWidth()) >
                                                                          linearLayout.getWidth())) {
                         final Button neutralButton = (dialog
-                                                    instanceof androidx.appcompat.app.AlertDialog) ?
-                           ((androidx.appcompat.app.AlertDialog) dialog).getButton(BUTTON_NEUTRAL) :
+                                                    instanceof android.support.v7.app.AlertDialog) ?
+                           ((android.support.v7.app.AlertDialog) dialog).getButton(BUTTON_NEUTRAL) :
                            ((AlertDialog) dialog).getButton(BUTTON_NEUTRAL);
                         final Button negativeButton = (dialog
-                                                    instanceof androidx.appcompat.app.AlertDialog) ?
-                          ((androidx.appcompat.app.AlertDialog) dialog).getButton(BUTTON_NEGATIVE) :
+                                                    instanceof android.support.v7.app.AlertDialog) ?
+                          ((android.support.v7.app.AlertDialog) dialog).getButton(BUTTON_NEGATIVE) :
                           ((AlertDialog) dialog).getButton(BUTTON_NEGATIVE);
                         linearLayout.setOrientation(VERTICAL);
                         linearLayout.setGravity(Gravity.END);
@@ -269,7 +268,7 @@ public class DefaultDialogManager implements DialogManager {
      * @param builder the {@link DialogType#CLASSIC CLASSIC} Rate Dialog
      *                {@link android.app.AlertDialog.Builder}
      * @param dialogContext a Context for Rate Dialogs created by this Builder
-     * @see AppCompatDialogManager#supplyAppCompatClassicDialogArguments(androidx.appcompat.app.AlertDialog.Builder, Context)
+     * @see AppCompatDialogManager#supplyAppCompatClassicDialogArguments(android.support.v7.app.AlertDialog.Builder, Context)
      */
     @SuppressWarnings("WeakerAccess")
     protected void supplyClassicDialogArguments(@NonNull AlertDialog.Builder builder,

@@ -12,7 +12,7 @@ import android.util.Log;
 
 import java.util.Arrays;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import static com.vorlonsoft.android.rate.Constants.Utils.EMPTY_STRING_ARRAY;
 import static com.vorlonsoft.android.rate.Constants.Utils.LOG_MESSAGE_PART_1;

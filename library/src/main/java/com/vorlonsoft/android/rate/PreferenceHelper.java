@@ -11,8 +11,8 @@ import android.content.SharedPreferences;
 
 import java.util.Date;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import static com.vorlonsoft.android.rate.Constants.Date.YEAR_IN_DAYS;
 import static com.vorlonsoft.android.rate.Constants.Utils.EMPTY_STRING;

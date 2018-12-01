@@ -12,7 +12,7 @@ import android.content.pm.ApplicationInfo
 import android.os.Build.VERSION.SDK_INT
 import android.os.Build.VERSION_CODES.HONEYCOMB
 import android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH
-import androidx.annotation.RequiresApi
+import android.support.annotation.RequiresApi
 import com.vorlonsoft.android.rate.Constants.Utils.EMPTY_STRING
 import com.vorlonsoft.android.rate.Constants.Utils.EMPTY_STRING_ARRAY
 
@@ -44,19 +44,19 @@ internal object Utils {
     }
 
     /**
-     * Creates [androidx.appcompat.app.AlertDialog.Builder].
+     * Creates [android.support.v7.app.AlertDialog.Builder].
      *
      * @param context activity context
      * @param themeResId theme resource ID
-     * @return created [androidx.appcompat.app.AlertDialog.Builder] object
+     * @return created [android.support.v7.app.AlertDialog.Builder] object
      */
     @RequiresApi(ICE_CREAM_SANDWICH)
     @JvmStatic
     fun getAppCompatDialogBuilder(context: Context,
-                                  themeResId: Int): androidx.appcompat.app.AlertDialog.Builder {
+                                  themeResId: Int): android.support.v7.app.AlertDialog.Builder {
         return when (themeResId) {
-            0 -> androidx.appcompat.app.AlertDialog.Builder(context)
-            else -> androidx.appcompat.app.AlertDialog.Builder(context, themeResId)
+            0 -> android.support.v7.app.AlertDialog.Builder(context)
+            else -> android.support.v7.app.AlertDialog.Builder(context, themeResId)
         }
     }
 

@@ -9,16 +9,17 @@ package com.vorlonsoft.android.rate;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.view.View;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.ref.WeakReference;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AlertDialog;
 
 import static com.vorlonsoft.android.rate.DialogType.CLASSIC;
 
@@ -52,11 +53,11 @@ public class AppCompatDialogManager extends DefaultDialogManager implements Dial
     }
 
     /**
-     * <p>Creates {@link androidx.appcompat.app.AlertDialog.Builder}.</p>
+     * <p>Creates {@link android.support.v7.app.AlertDialog.Builder}.</p>
      *
      * @param context activity context
      * @param themeResId theme resource ID
-     * @return created {@link androidx.appcompat.app.AlertDialog.Builder} object
+     * @return created {@link android.support.v7.app.AlertDialog.Builder} object
      * @see DefaultDialogManager#getDialogBuilder(Context, int)
      */
     @SuppressWarnings("WeakerAccess")
@@ -69,10 +70,10 @@ public class AppCompatDialogManager extends DefaultDialogManager implements Dial
 
     /**
      * <p>Supplies the arguments to the {@link DialogType#CLASSIC CLASSIC} Rate Dialog
-     * {@link androidx.appcompat.app.AlertDialog.Builder}.</p>
+     * {@link android.support.v7.app.AlertDialog.Builder}.</p>
      *
      * @param builder the {@link DialogType#CLASSIC CLASSIC} Rate Dialog
-     *                {@link androidx.appcompat.app.AlertDialog.Builder}
+     *                {@link android.support.v7.app.AlertDialog.Builder}
      * @param dialogContext a Context for Rate Dialogs created by this Builder
      * @see DefaultDialogManager#supplyClassicDialogArguments(android.app.AlertDialog.Builder, Context)
      */
