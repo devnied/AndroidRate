@@ -12,6 +12,7 @@ import com.vorlonsoft.android.rate.StoreType.Companion.APPLE
 import com.vorlonsoft.android.rate.StoreType.Companion.BAZAAR
 import com.vorlonsoft.android.rate.StoreType.Companion.BLACKBERRY
 import com.vorlonsoft.android.rate.StoreType.Companion.CHINESESTORES
+import com.vorlonsoft.android.rate.StoreType.Companion.HUAWEI
 import com.vorlonsoft.android.rate.StoreType.Companion.MI
 import com.vorlonsoft.android.rate.StoreType.Companion.SAMSUNG
 import com.vorlonsoft.android.rate.StoreType.Companion.SLIDEME
@@ -31,6 +32,8 @@ import com.vorlonsoft.android.rate.StoreType.Companion.YANDEX
 internal object UriHelper {
     /** Default store URI. */
     private const val DEFAULT_STORE_URI: String = "market://details?id="
+    /** Huawei store URI. */
+    private const val HUAWEI_STORE: String = "appmarket://details?id="
     /** Amazon Appstore URI. */
     private const val AMAZON_APPSTORE: String = "amzn://apps/android?p="
     /** Amazon Appstore web URI. */
@@ -106,6 +109,7 @@ internal object UriHelper {
             SLIDEME -> formUri(SLIDEME_MARKETPLACE, paramName)
             TENCENT -> formUri(TENCENT_APP_STORE, paramName)
             YANDEX -> formUri(YANDEX_STORE, paramName)
+            HUAWEI -> formUri(HUAWEI_STORE, paramName)
             else -> formUri(GOOGLE_PLAY, paramName)
         }
     }

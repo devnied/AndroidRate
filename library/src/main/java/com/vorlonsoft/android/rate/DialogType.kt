@@ -6,7 +6,7 @@
 
 package com.vorlonsoft.android.rate
 
-import android.support.annotation.IntDef
+import androidx.annotation.IntDef
 
 /**
  * DialogType Class - the dialog types class of the AndroidRate library.

@@ -12,7 +12,7 @@ import android.content.pm.ApplicationInfo
 import android.os.Build.VERSION.SDK_INT
 import android.os.Build.VERSION_CODES.HONEYCOMB
 import android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH
-import android.support.annotation.RequiresApi
+import androidx.annotation.RequiresApi
 import com.vorlonsoft.android.rate.Constants.Utils.EMPTY_STRING
 import com.vorlonsoft.android.rate.Constants.Utils.EMPTY_STRING_ARRAY
 
@@ -53,10 +53,10 @@ internal object Utils {
     @RequiresApi(ICE_CREAM_SANDWICH)
     @JvmStatic
     fun getAppCompatDialogBuilder(context: Context,
-                                  themeResId: Int): android.support.v7.app.AlertDialog.Builder {
+                                  themeResId: Int): androidx.appcompat.app.AlertDialog.Builder {
         return when (themeResId) {
-            0 -> android.support.v7.app.AlertDialog.Builder(context)
-            else -> android.support.v7.app.AlertDialog.Builder(context, themeResId)
+            0 -> androidx.appcompat.app.AlertDialog.Builder(context)
+            else -> androidx.appcompat.app.AlertDialog.Builder(context, themeResId)
         }
     }
 
@@ -73,8 +73,7 @@ internal object Utils {
             return EMPTY_STRING_ARRAY
         }
 
-        val applicationInfo: List<ApplicationInfo> = context.packageManager
-                                                                    .getInstalledApplications(0)
+        val applicationInfo: List<ApplicationInfo> = context.packageManager.getInstalledApplications(0)
 
         if (targetPackages.size == 1) {
             if ((targetPackages[0] != null) && (targetPackages[0] != EMPTY_STRING)) {

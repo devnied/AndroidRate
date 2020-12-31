@@ -14,7 +14,7 @@ import android.os.Build.VERSION_CODES.LOLLIPOP
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.support.annotation.StyleRes
+import androidx.annotation.StyleRes
 import com.vorlonsoft.android.rate.Constants.Utils.EMPTY_STRING
 import com.vorlonsoft.android.rate.Constants.Utils.TAG
 import com.vorlonsoft.android.rate.DialogType.Companion.CLASSIC

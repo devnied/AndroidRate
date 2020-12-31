@@ -11,8 +11,8 @@ import android.content.SharedPreferences;
 
 import java.util.Date;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import static com.vorlonsoft.android.rate.Constants.Date.YEAR_IN_DAYS;
 import static com.vorlonsoft.android.rate.Constants.Utils.EMPTY_STRING;
@@ -143,7 +143,7 @@ final class PreferenceHelper {
                 }
             }
             setCurrentDayDialogLaunchTimes(context, currentDialogLaunchTimes, currentYear,
-                                           currentDay, (short) (Short.valueOf(currentDayCount) + 1));
+                                           currentDay, (short) (Short.parseShort(currentDayCount) + 1));
         } else {
             setCurrentDayDialogLaunchTimes(context, currentDialogLaunchTimes, currentYear,
                                            currentDay, (short) 1);
@@ -175,7 +175,7 @@ final class PreferenceHelper {
         short dialogLaunchTimesCount = 0;
         final String[] dialogLaunchTimesSplit = dialogLaunchTimes.split(":");
         for (String aDialogLaunchTimesSplit : dialogLaunchTimesSplit) {
-            dialogLaunchTimesCount = (short) (dialogLaunchTimesCount + Short.valueOf(aDialogLaunchTimesSplit));
+            dialogLaunchTimesCount = (short) (dialogLaunchTimesCount + Short.parseShort(aDialogLaunchTimesSplit));
         }
 
         return dialogLaunchTimesCount;

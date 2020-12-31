@@ -10,6 +10,7 @@ import android.net.Uri
 import com.vorlonsoft.android.rate.Constants.Utils.EMPTY_STRING
 import com.vorlonsoft.android.rate.StoreType.Companion.CHINESESTORES
 import com.vorlonsoft.android.rate.StoreType.Companion.GOOGLEPLAY
+import com.vorlonsoft.android.rate.StoreType.Companion.HUAWEI
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test
@@ -54,6 +55,10 @@ internal class UriHelperTest {
             assertNull(uri)
         }
         run {
+            val uri: Uri? = UriHelper.getStoreWebUri(HUAWEI, EMPTY_STRING)
+            assertEquals(uri?.toString(), HUAWEI_URI)
+        }
+        run {
             val uri: Uri? = UriHelper.getStoreWebUri(GOOGLEPLAY, EMPTY_STRING)
             assertEquals(uri?.toString(), GOOGLEPLAY_WEB_URI)
         }
@@ -70,6 +75,8 @@ internal class UriHelperTest {
     private companion object {
         /** 19 chinese app stores URI. */
         private const val CHINESESTORES_URI: String = "market://details?id="
+        /** 19 chinese app stores URI. */
+        private const val HUAWEI_URI: String = "appmarket://details?id="
         /** Google Play URI. */
         private const val GOOGLEPLAY_URI: String = CHINESESTORES_URI
         /** Google Play web URI. */

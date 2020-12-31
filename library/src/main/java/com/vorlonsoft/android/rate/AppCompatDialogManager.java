@@ -9,17 +9,16 @@ package com.vorlonsoft.android.rate;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.view.View;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.ref.WeakReference;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AlertDialog;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 
 import static com.vorlonsoft.android.rate.DialogType.CLASSIC;
 
@@ -43,7 +42,7 @@ import static com.vorlonsoft.android.rate.DialogType.CLASSIC;
  */
 public class AppCompatDialogManager extends DefaultDialogManager implements DialogManager {
     /** <p>The WeakReference to the {@link AppCompatDialogManager} singleton object.</p> */
-    private static volatile WeakReference<DialogManager> singleton = null;
+    private static final WeakReference<DialogManager> singleton = null;
 
     @SuppressWarnings("WeakerAccess")
     @RequiresApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
@@ -53,11 +52,11 @@ public class AppCompatDialogManager extends DefaultDialogManager implements Dial
     }
 
     /**
-     * <p>Creates {@link android.support.v7.app.AlertDialog.Builder}.</p>
+     * <p>Creates {@link androidx.appcompat.app.AlertDialog.Builder}.</p>
      *
      * @param context activity context
      * @param themeResId theme resource ID
-     * @return created {@link android.support.v7.app.AlertDialog.Builder} object
+     * @return created {@link androidx.appcompat.app.AlertDialog.Builder} object
      * @see DefaultDialogManager#getDialogBuilder(Context, int)
      */
     @SuppressWarnings("WeakerAccess")
@@ -70,10 +69,10 @@ public class AppCompatDialogManager extends DefaultDialogManager implements Dial
 
     /**
      * <p>Supplies the arguments to the {@link DialogType#CLASSIC CLASSIC} Rate Dialog
-     * {@link android.support.v7.app.AlertDialog.Builder}.</p>
+     * {@link androidx.appcompat.app.AlertDialog.Builder}.</p>
      *
      * @param builder the {@link DialogType#CLASSIC CLASSIC} Rate Dialog
-     *                {@link android.support.v7.app.AlertDialog.Builder}
+     *                {@link androidx.appcompat.app.AlertDialog.Builder}
      * @param dialogContext a Context for Rate Dialogs created by this Builder
      * @see DefaultDialogManager#supplyClassicDialogArguments(android.app.AlertDialog.Builder, Context)
      */
@@ -179,27 +178,9 @@ public class AppCompatDialogManager extends DefaultDialogManager implements Dial
         public DialogManager createDialogManager(@NotNull final Context context,
                                                  @NotNull final DialogOptions dialogOptions,
                                                  @NotNull final StoreOptions storeOptions) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-                DialogManager.Factory dialogManagerFactory = new DefaultDialogManager.Factory();
-                AppRate.with(context).setDialogManagerFactory(dialogManagerFactory);
-                return dialogManagerFactory.createDialogManager(context, dialogOptions, storeOptions);
-            } else {
-                if ((singleton == null) || (singleton.get() == null)) {
-                    synchronized (AppCompatDialogManager.class) {
-                        if ((singleton == null) || (singleton.get() == null)) {
-                            if (singleton != null) {
-                                singleton.clear();
-                            }
-                            singleton = new WeakReference<>(new AppCompatDialogManager(context, dialogOptions, storeOptions));
-                        }else {
-                            ((DefaultDialogManager) singleton.get()).setContext(context);
-                        }
-                    }
-                } else {
-                    ((DefaultDialogManager) singleton.get()).setContext(context);
-                }
-                return singleton.get();
-            }
+            DialogManager.Factory dialogManagerFactory = new DefaultDialogManager.Factory();
+            AppRate.with(context).setDialogManagerFactory(dialogManagerFactory);
+            return dialogManagerFactory.createDialogManager(context, dialogOptions, storeOptions);
         }
     }
 }

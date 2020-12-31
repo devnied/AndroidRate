@@ -12,7 +12,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.util.ArrayMap;
 import android.util.Log;
 import android.view.View;
@@ -22,9 +21,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StyleRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StyleRes;
 
 import static android.content.DialogInterface.BUTTON_POSITIVE;
 import static android.os.Build.VERSION.SDK_INT;
@@ -120,12 +119,21 @@ public final class AppRate {
      */
     @SuppressWarnings("UnusedReturnValue")
     public static boolean showRateDialogIfMeetsConditions(Activity activity) {
-        final boolean isMeetsConditions = ((singleton != null) &&
-                                           (singleton.isDebug() || singleton.shouldShowRateDialog()));
+        final boolean isMeetsConditions = isMeetsConditions(activity);
         if (isMeetsConditions) {
             singleton.showRateDialog(activity);
         }
         return isMeetsConditions;
+    }
+
+    /**
+     * Check if the conditions are met.
+     * @param activity your activity, use "this" in most cases
+     * @return true if the conditions are met, false otherwise
+     */
+    public static boolean isMeetsConditions(Activity activity) {
+        return ((singleton != null) &&
+                (singleton.isDebug() || singleton.shouldShowRateDialog()));
     }
 
     /**

@@ -15,8 +15,8 @@ import android.view.View;
 
 import java.lang.ref.WeakReference;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import static android.content.DialogInterface.BUTTON_NEGATIVE;
 import static android.content.DialogInterface.BUTTON_NEUTRAL;
@@ -34,6 +34,7 @@ import static com.vorlonsoft.android.rate.StoreType.BAZAAR;
 import static com.vorlonsoft.android.rate.StoreType.BLACKBERRY;
 import static com.vorlonsoft.android.rate.StoreType.CHINESESTORES;
 import static com.vorlonsoft.android.rate.StoreType.GOOGLEPLAY;
+import static com.vorlonsoft.android.rate.StoreType.HUAWEI;
 import static com.vorlonsoft.android.rate.StoreType.INTENT;
 import static com.vorlonsoft.android.rate.StoreType.MI;
 import static com.vorlonsoft.android.rate.StoreType.OTHER;
@@ -253,6 +254,8 @@ final class DefaultDialogOnClickListener implements View.OnClickListener,
                 return createIntentsForStore(context, TENCENT, packageName);
             case YANDEX:
                 return createIntentsForStore(context, YANDEX, packageName);
+            case HUAWEI:
+                return createIntentsForStore(context, HUAWEI, packageName);
             case INTENT:
             case OTHER:
                 return storeOptions.getIntents();

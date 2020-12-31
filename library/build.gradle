@@ -6,18 +6,19 @@
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 30
     defaultConfig {
         //noinspection MinSdkTooLow
-        minSdkVersion 9
-        targetSdkVersion 28
+        minSdkVersion 15
+        targetSdkVersion 30
         versionCode version_code
         versionName version
         testInstrumentationRunner "com.android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildFeatures {
+        viewBinding true
     }
     compileOptions {
         sourceCompatibility java_version
@@ -47,9 +48,8 @@ android {
     }
 }
 dependencies {
-    compileOnly 'com.android.support:support-annotations:28.0.0'
-    api 'com.android.support:support-annotations:28.0.0'
-    implementation "com.android.support:appcompat-v7:28.0.0"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    compileOnly 'androidx.annotation:annotation:1.1.0'
+    api 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
 }

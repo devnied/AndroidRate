@@ -10,8 +10,8 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -87,25 +87,25 @@ public class DefaultDialogManager implements DialogManager {
                 }
                 increment365DayPeriodDialogLaunchTimes(context);
             }
-            if (((SDK_INT >= LOLLIPOP) || (dialog instanceof android.support.v7.app.AlertDialog)) &&
+            if (((SDK_INT >= LOLLIPOP) || (dialog instanceof androidx.appcompat.app.AlertDialog)) &&
                 ((dialogOptions.getType() == CLASSIC) ||
                  (dialogOptions.getView(context) == null))) {
                 try {
                     final Button positiveButton = (dialog
-                                                    instanceof android.support.v7.app.AlertDialog) ?
-                          ((android.support.v7.app.AlertDialog) dialog).getButton(BUTTON_POSITIVE) :
+                                                    instanceof androidx.appcompat.app.AlertDialog) ?
+                          ((androidx.appcompat.app.AlertDialog) dialog).getButton(BUTTON_POSITIVE) :
                           ((AlertDialog) dialog).getButton(BUTTON_POSITIVE);
                     final LinearLayout linearLayout = (LinearLayout) positiveButton.getParent();
                     if ((linearLayout.getOrientation() != VERTICAL) &&
                         ((positiveButton.getLeft() + positiveButton.getWidth()) >
                                                                          linearLayout.getWidth())) {
                         final Button neutralButton = (dialog
-                                                    instanceof android.support.v7.app.AlertDialog) ?
-                           ((android.support.v7.app.AlertDialog) dialog).getButton(BUTTON_NEUTRAL) :
+                                                    instanceof androidx.appcompat.app.AlertDialog) ?
+                           ((androidx.appcompat.app.AlertDialog) dialog).getButton(BUTTON_NEUTRAL) :
                            ((AlertDialog) dialog).getButton(BUTTON_NEUTRAL);
                         final Button negativeButton = (dialog
-                                                    instanceof android.support.v7.app.AlertDialog) ?
-                          ((android.support.v7.app.AlertDialog) dialog).getButton(BUTTON_NEGATIVE) :
+                                                    instanceof androidx.appcompat.app.AlertDialog) ?
+                          ((androidx.appcompat.app.AlertDialog) dialog).getButton(BUTTON_NEGATIVE) :
                           ((AlertDialog) dialog).getButton(BUTTON_NEGATIVE);
                         linearLayout.setOrientation(VERTICAL);
                         linearLayout.setGravity(Gravity.END);
@@ -164,10 +164,8 @@ public class DefaultDialogManager implements DialogManager {
             final View buttonNeutral = view.findViewById(R.id.rate_dialog_button_neutral);
             final View buttonNegative = view.findViewById(R.id.rate_dialog_button_negative);
             final View buttonPositive = view.findViewById(R.id.rate_dialog_button_positive);
-            final boolean showNeutralButton = dialogOptions.isShowNeutralButton() &&
-                                                                            (buttonNeutral != null);
-            final boolean showNegativeButton = dialogOptions.isShowNegativeButton() &&
-                                                                           (buttonNegative != null);
+            final boolean showNeutralButton = dialogOptions.isShowNeutralButton() && (buttonNeutral != null);
+            final boolean showNegativeButton = dialogOptions.isShowNegativeButton() && (buttonNegative != null);
             final boolean showPositiveButton = buttonPositive != null;
 
             if (fromUser) {
@@ -175,12 +173,10 @@ public class DefaultDialogManager implements DialogManager {
             }
 
             if (!showNegativeButton && showPositiveButton) {
-                buttonPositive
-                            .setBackgroundResource(R.drawable.rate_dialog_rectangle_rounded_bottom);
+                buttonPositive.setBackgroundResource(R.drawable.rate_dialog_rectangle_rounded_bottom);
                 buttonPositive.setVisibility(VISIBLE);
             } else if (showNegativeButton && !showPositiveButton) {
-                buttonNegative
-                            .setBackgroundResource(R.drawable.rate_dialog_rectangle_rounded_bottom);
+                buttonNegative.setBackgroundResource(R.drawable.rate_dialog_rectangle_rounded_bottom);
                 buttonNegative.setVisibility(VISIBLE);
             } else if (showNegativeButton) {
                 buttonNegative.setVisibility(VISIBLE);
@@ -198,14 +194,12 @@ public class DefaultDialogManager implements DialogManager {
                     (dialogOptions.isShowMessage() &&
                      (view.findViewById(R.id.rate_dialog_text_dialog_message) != null))) {
                     if (showNeutralButton && !(showNegativeButton || showPositiveButton)) {
-                        layoutRatingBar
-                            .setBackgroundResource(R.drawable.rate_dialog_rectangle_rounded_bottom);
+                        layoutRatingBar.setBackgroundResource(R.drawable.rate_dialog_rectangle_rounded_bottom);
                     } else if (!showNeutralButton && (showNegativeButton || showPositiveButton)) {
                         layoutRatingBar.setBackgroundResource(R.color.rateDialogColorBackground);
                     }
                 } else if (!showNeutralButton && (showNegativeButton || showPositiveButton)) {
-                    layoutRatingBar
-                            .setBackgroundResource(R.drawable.rate_dialog_rectangle_rounded_top);
+                    layoutRatingBar.setBackgroundResource(R.drawable.rate_dialog_rectangle_rounded_top);
                 } else if (showNeutralButton && !(showNegativeButton || showPositiveButton)) {
                     layoutRatingBar.setBackgroundResource(R.drawable.rate_dialog_rectangle_rounded);
                 }
@@ -234,8 +228,7 @@ public class DefaultDialogManager implements DialogManager {
                                    final StoreOptions storeOptions) {
         this.context = context;
         this.dialogOptions = dialogOptions;
-        positiveListener = DefaultDialogOnClickListener.getInstance(context, storeOptions,
-                                                                 dialogOptions.getButtonListener());
+        positiveListener = DefaultDialogOnClickListener.getInstance(context, storeOptions, dialogOptions.getButtonListener());
         negativeListener = positiveListener;
         neutralListener = positiveListener;
         buttonListener = (View.OnClickListener) positiveListener;
@@ -256,8 +249,7 @@ public class DefaultDialogManager implements DialogManager {
      */
     @SuppressWarnings("WeakerAccess")
     @NonNull
-    protected AlertDialog.Builder getDialogBuilder(@NonNull final Context context,
-                                                            final int themeResId) {
+    protected AlertDialog.Builder getDialogBuilder(@NonNull final Context context, final int themeResId) {
         return Utils.getDialogBuilder(context, themeResId);
     }
 
@@ -268,11 +260,10 @@ public class DefaultDialogManager implements DialogManager {
      * @param builder the {@link DialogType#CLASSIC CLASSIC} Rate Dialog
      *                {@link android.app.AlertDialog.Builder}
      * @param dialogContext a Context for Rate Dialogs created by this Builder
-     * @see AppCompatDialogManager#supplyAppCompatClassicDialogArguments(android.support.v7.app.AlertDialog.Builder, Context)
+     * @see AppCompatDialogManager#supplyAppCompatClassicDialogArguments(androidx.appcompat.app.AlertDialog.Builder, Context)
      */
     @SuppressWarnings("WeakerAccess")
-    protected void supplyClassicDialogArguments(@NonNull AlertDialog.Builder builder,
-                                                @NonNull Context dialogContext) {
+    protected void supplyClassicDialogArguments(@NonNull AlertDialog.Builder builder, @NonNull Context dialogContext) {
         if (dialogOptions.isShowIcon()) {
             builder.setIcon(dialogOptions.getIcon(dialogContext));
         }
@@ -312,10 +303,8 @@ public class DefaultDialogManager implements DialogManager {
         final View buttonPositive = view.findViewById(R.id.rate_dialog_button_positive);
         final boolean showDialogIcon = dialogOptions.isShowIcon() && (icon != null);
         final boolean showTitle = dialogOptions.isShowTitle() && (textDialogTitle != null);
-        final boolean showMessage = dialogOptions.isShowMessage() &&
-                                                                        (textDialogMessage != null);
-        final boolean showNeutralButton = dialogOptions.isShowNeutralButton() &&
-                                                                            (buttonNeutral != null);
+        final boolean showMessage = dialogOptions.isShowMessage() && (textDialogMessage != null);
+        final boolean showNeutralButton = dialogOptions.isShowNeutralButton() && (buttonNeutral != null);
 
         if (showDialogIcon) {
             ((ImageView) icon).setImageDrawable(dialogOptions.getIcon(dialogContext));
@@ -398,20 +387,14 @@ public class DefaultDialogManager implements DialogManager {
         AlertDialog.Builder builder = getDialogBuilder(context, dialogOptions.getThemeResId());
         Context dialogContext;
 
-        if (SDK_INT >= HONEYCOMB) {
-            dialogContext = builder.getContext();
-        } else {
-            dialogContext = context;
-        }
+        dialogContext = builder.getContext();
 
         final View view = dialogOptions.getView(dialogContext);
 
         if ((dialogOptions.getType() == CLASSIC) || (view == null)) {
             if (dialogOptions.getType() != CLASSIC) {
                 builder = getDialogBuilder(context, 0);
-                if (SDK_INT >= HONEYCOMB) {
-                    dialogContext = builder.getContext();
-                }
+                dialogContext = builder.getContext();
             }
             supplyClassicDialogArguments(builder, dialogContext);
         } else {

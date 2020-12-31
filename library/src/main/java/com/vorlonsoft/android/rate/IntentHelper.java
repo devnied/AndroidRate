@@ -12,7 +12,7 @@ import android.util.Log;
 
 import java.util.Arrays;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import static com.vorlonsoft.android.rate.Constants.Utils.EMPTY_STRING_ARRAY;
 import static com.vorlonsoft.android.rate.Constants.Utils.LOG_MESSAGE_PART_1;
@@ -23,6 +23,7 @@ import static com.vorlonsoft.android.rate.StoreType.APPLE;
 import static com.vorlonsoft.android.rate.StoreType.BAZAAR;
 import static com.vorlonsoft.android.rate.StoreType.BLACKBERRY;
 import static com.vorlonsoft.android.rate.StoreType.CHINESESTORES;
+import static com.vorlonsoft.android.rate.StoreType.HUAWEI;
 import static com.vorlonsoft.android.rate.StoreType.MI;
 import static com.vorlonsoft.android.rate.StoreType.SAMSUNG;
 import static com.vorlonsoft.android.rate.StoreType.SLIDEME;
@@ -71,11 +72,12 @@ final class IntentHelper {
             "com.android.browser"
     };
 
+    private static final String HUAWEI_STORE_PACKAGE_NAME = "com.huawei.appmarket";
+
     private static final String[] CHINESE_STORES_PACKAGES_NAMES = {
             "com.tencent.android.qqdownloader", //腾讯应用宝
             "com.qihoo.appstore",               //360手机助手
             "com.xiaomi.market",                //小米应用商店
-            "com.huawei.appmarket",             //华为应用商店
             "com.baidu.appsearch",              //百度手机助手
             "com.oppo.market",                  //OPPO应用商店
             "zte.com.market",                   //中兴应用商店
@@ -135,6 +137,8 @@ final class IntentHelper {
                 return new String[]{TENCENT_PACKAGE_NAME};
             case YANDEX:
                 return new String[]{YANDEX_STORE_PACKAGE_NAME};
+            case HUAWEI:
+                return new String[]{HUAWEI_STORE_PACKAGE_NAME};
             default:
                 return new String[]{GOOGLE_PLAY_PACKAGE_NAME};
         }

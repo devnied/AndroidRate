@@ -6,7 +6,7 @@
 
 package com.vorlonsoft.android.rate
 
-import android.support.annotation.IntDef
+import androidx.annotation.IntDef
 
 /**
  * StoreType Class - the store types class of the AndroidRate library.
@@ -24,7 +24,7 @@ open class StoreType {
     /**
      * Denotes that the annotated element of the primitive type int represents a logical type and
      * that its value should be one of the following constants: [AMAZON], [BAZAAR], [CHINESESTORES],
-     * [GOOGLEPLAY], [MI], [SAMSUNG], [SLIDEME], [TENCENT], [YANDEX].
+     * [GOOGLEPLAY], [MI], [SAMSUNG], [SLIDEME], [TENCENT], [YANDEX], [HUAWEI].
      *
      * @since       1.1.6
      * @version     1.2.1
@@ -32,7 +32,7 @@ open class StoreType {
      */
     @MustBeDocumented
     @Retention(AnnotationRetention.SOURCE)
-    @IntDef(AMAZON, BAZAAR, CHINESESTORES, GOOGLEPLAY, MI, SAMSUNG, SLIDEME, TENCENT, YANDEX)
+    @IntDef(AMAZON, BAZAAR, CHINESESTORES, GOOGLEPLAY, MI, SAMSUNG, SLIDEME, TENCENT, YANDEX, HUAWEI)
     annotation class StoreWithoutApplicationId
 
     /**
@@ -52,7 +52,7 @@ open class StoreType {
      * Denotes that the annotated element of the primitive type int represents a logical type and
      * that its value should be one of the following constants: [AMAZON], [APPLE], [BAZAAR],
      * [BLACKBERRY], [CHINESESTORES], [GOOGLEPLAY], [INTENT], [MI], [OTHER], [SAMSUNG], [SLIDEME],
-     * [TENCENT], [YANDEX].
+     * [TENCENT], [YANDEX], [HUAWEI].
      *
      * @since       1.1.6
      * @version     1.2.1
@@ -61,7 +61,7 @@ open class StoreType {
     @MustBeDocumented
     @Retention(AnnotationRetention.SOURCE)
     @IntDef(AMAZON, APPLE, BAZAAR, BLACKBERRY, CHINESESTORES, GOOGLEPLAY, INTENT, MI, OTHER,
-            SAMSUNG, SLIDEME, TENCENT, YANDEX)
+            SAMSUNG, SLIDEME, TENCENT, YANDEX, HUAWEI)
     annotation class AnyStoreType
 
     /** Contains constants for store types. */
@@ -92,5 +92,7 @@ open class StoreType {
         const val INTENT: Int = 11
         /** Any other Store. */
         const val OTHER: Int = 12
+        /** Huawei Store. */
+        const val HUAWEI: Int = 13
     }
 }
