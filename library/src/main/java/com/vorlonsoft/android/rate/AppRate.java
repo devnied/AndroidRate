@@ -51,6 +51,7 @@ import static com.vorlonsoft.android.rate.PreferenceHelper.setVersionName;
 import static com.vorlonsoft.android.rate.StoreType.AMAZON;
 import static com.vorlonsoft.android.rate.StoreType.APPLE;
 import static com.vorlonsoft.android.rate.StoreType.BLACKBERRY;
+import static com.vorlonsoft.android.rate.StoreType.HUAWEI;
 import static com.vorlonsoft.android.rate.StoreType.INTENT;
 import static com.vorlonsoft.android.rate.StoreType.OTHER;
 import static com.vorlonsoft.android.rate.StoreType.YANDEX;
@@ -683,9 +684,9 @@ public final class AppRate {
         if ((storeType == APPLE) || (storeType == BLACKBERRY)) {
             throw new IllegalArgumentException("For StoreType.APPLE/StoreType.BLACKBERRY you must" +
                      " use setStoreType(StoreType.APPLE/StoreType.BLACKBERRY, long applicationId).");
-        } else if ((storeType < AMAZON) || (storeType > YANDEX)) {
+        } else if ((storeType < AMAZON) || (storeType > HUAWEI)) {
             throw new IllegalArgumentException("StoreType must be one of: AMAZON, APPLE, BAZAAR, " +
-                    "BLACKBERRY, CHINESESTORES, GOOGLEPLAY, MI, SAMSUNG, SLIDEME, TENCENT, YANDEX.");
+                    "BLACKBERRY, CHINESESTORES, GOOGLEPLAY, MI, SAMSUNG, SLIDEME, TENCENT, YANDEX. HUAWEI");
         }
         return setStoreType(storeType, null, null);
     }
@@ -707,9 +708,9 @@ public final class AppRate {
     @SuppressWarnings({"unused", "WeakerAccess"})
     public AppRate setStoreType(@StoreType.StoreWithApplicationId final int storeType,
                                 final long applicationId) throws IllegalArgumentException {
-        if ((storeType < AMAZON) || (storeType > YANDEX)) {
+        if ((storeType < AMAZON) || (storeType > HUAWEI)) {
             throw new IllegalArgumentException("StoreType must be one of: AMAZON, APPLE, BAZAAR, " +
-                    "BLACKBERRY, CHINESESTORES, GOOGLEPLAY, MI, SAMSUNG, SLIDEME, TENCENT, YANDEX.");
+                    "BLACKBERRY, CHINESESTORES, GOOGLEPLAY, MI, SAMSUNG, SLIDEME, TENCENT, YANDEX, HUAWEI.");
         }
         return ((storeType != APPLE) && (storeType != BLACKBERRY)) ?
                 setStoreType(storeType, null, null) :

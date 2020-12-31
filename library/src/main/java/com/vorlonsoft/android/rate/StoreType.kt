@@ -88,11 +88,12 @@ open class StoreType {
         const val TENCENT: Int = 9
         /** Yandex.Store. */
         const val YANDEX: Int = 10
-        /** Any custom intents. */
-        const val INTENT: Int = 11
-        /** Any other Store. */
-        const val OTHER: Int = 12
         /** Huawei Store. */
-        const val HUAWEI: Int = 13
+        const val HUAWEI: Int = 11
+        /** Any custom intents. */
+        const val INTENT: Int = 20
+        /** Any other Store. */
+        const val OTHER: Int = 21
+
     }
 }
