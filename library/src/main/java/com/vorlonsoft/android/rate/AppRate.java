@@ -44,6 +44,8 @@ import static com.vorlonsoft.android.rate.PreferenceHelper.isFirstLaunch;
 import static com.vorlonsoft.android.rate.PreferenceHelper.setCustomEventCount;
 import static com.vorlonsoft.android.rate.PreferenceHelper.setFirstLaunchSharedPreferences;
 import static com.vorlonsoft.android.rate.PreferenceHelper.setIsAgreeShowDialog;
+import static com.vorlonsoft.android.rate.PreferenceHelper.setRemindInterval;
+import static com.vorlonsoft.android.rate.PreferenceHelper.setRemindLaunchesNumber;
 import static com.vorlonsoft.android.rate.PreferenceHelper.setVersionCode;
 import static com.vorlonsoft.android.rate.PreferenceHelper.setVersionName;
 import static com.vorlonsoft.android.rate.StoreType.AMAZON;
@@ -150,6 +152,11 @@ public final class AppRate {
     public static boolean quickStart(Activity activity) {
         with(activity).monitor();
         return showRateDialogIfMeetsConditions(activity);
+    }
+
+    public void updateRemind() {
+        PreferenceHelper.setRemindInterval(context);
+        PreferenceHelper.setRemindLaunchesNumber(context);
     }
 
     private boolean isOverDate(long targetDate, long threshold) {
